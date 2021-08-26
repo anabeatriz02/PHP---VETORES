@@ -112,39 +112,38 @@ echo "<br> <br>";
 
 //Escreva uma função que altere a nota de um aluuno especifico - Minha Atividade
 
-function alterarNotaAluno(array $turma){
-    $alterarNota = null;
-    foreach($turma as $aluno){
-        if($alterarNota == null){
-            $alterarNota = $aluno;
-        }elseif($aluno["nota"] > $alterarNota["nota"]){
-            $alterarNota = $aluno;
-        }
-     }
+// function alterarNotaAluno(array $turma){
+//     $alterarNota = null;
+//     foreach($turma as $aluno){
+//         if($alterarNota == null){
+//             $alterarNota = $aluno;
+//         }elseif($aluno["nota"] > $alterarNota["nota"]){
+//             $alterarNota = $aluno;
+//         }
+//      }
 
-     return $alterarNota;
-}
+//      return $alterarNota;
+// }
 
-$alterarNota = alterarNotaAluno($alunos);
-echo "A nota " . $alterarNota["nota"] . " deve ser alterada para 100 " .  " . ";
+// $alterarNota = alterarNotaAluno($alunos);
+// echo "A nota " . $alterarNota["nota"] . " deve ser alterada para 100 " .  " . ";
 
 //Escreva uma função que altere a nota de um aluuno especifico - Atividade do professor
 //escreva uma que inclua a situação de todos os alunos
 //caso a nota for menor que 50, situação = reprovado
 //caso a nota for maior que 50, situação = aprovado
 
-// function alterarNotaAluno(array $turma, $nome, $alterarNota){
-//     $alterarNota = null;
-//     foreach($turma as $nome){
-//         if($alterarNota == null){//             $alterarNota = $nome;
-//         }elseif($nome["nota"] > $alterarNota["nota"]){
-//             $alterarNota = $nome;
-//         }
-//      }
-
-//      return $alterarNota;
-// }
-// $alterarNota = alterarNotaAluno($nome);
-// echo "A nota " . $alterarNota["nota"] . " deve ser alterada para 100 " .  " . ";
+function alterarNotaAluno(array $turma, $nome, $alterarNota){
+    foreach($turma as $chave => $aluno){
+        if($aluno["nome"] == $nome){
+            $turma[$chave]["nota"] == $alterarNota
+            
+            return;
+      
+        }
+     }
+}
+$alterarNota = alterarNotaAluno($nome);
+echo "A nota " . $alterarNota["nota"] . " deve ser alterada para 100 " .  " . ";
  
 ?>
