@@ -27,6 +27,28 @@ function alunoMaiorNota(array $turma){
 
      return $melhorAluno;
 }
+//& - passagem de parametro por referencia
+function alterarNotaAluno(array &$turma, $nome, $novaNota){
+    foreach($turma as $chave => $aluno){
+        if($aluno["nome"] == $nome){
+            $turma[$chave]["nota"] = $novaNota;
+            return;
+      
+        }
+     }
+}
+
+function situacaoAproRepro(array &$turma){
+    foreach($turma as $chave => $aluno){
+        if($aluno["nota"] >= 50){
+            $turma[$chave]["situacao"]  = "aprovado";
+        }else{
+            $turma[$chave]["situacao"]  = "reprovado";
+        }
+    }
+
+    return;
+}
 
 $alunos = [
     "1" => [
@@ -54,6 +76,17 @@ $alunos = [
     ]
 ];
 
+//alteração de nota
+alterarNotaAluno($alunos, "Gustavo", 45);
+alterarNotaAluno($alunos, "Isabela", 60);
+
+//apro/repro
+situacaoAproRepro($alunos);
+
+print_r($alunos);
+
+echo "<br> <br>";
+
 
 //Atividade do prof
 $media = calcularMedia($alunos);
@@ -66,18 +99,19 @@ $melhorAluno = alunoMaiorNota($alunos);
 echo "Melhor estudante é, a " . $melhorAluno["nome"] . " com a nota " . $melhorAluno["nota"] . " . ";
 
 
-
 $alunosTurmaB = [
     "1" => [
         "nome" => "Kelly",
         "idade" => 17,
-        "nota" => 100
+        "nota" => 100,
+        "situacao" => true
     ],
 
     "2" => [
         "nome" => "Paulo",
         "idade" => 16,
-        "nota" => 85
+        "nota" => 85,
+        "situacao" => true
     ],
 
     "3" => [
@@ -128,22 +162,30 @@ echo "<br> <br>";
 // $alterarNota = alterarNotaAluno($alunos);
 // echo "A nota " . $alterarNota["nota"] . " deve ser alterada para 100 " .  " . ";
 
-//Escreva uma função que altere a nota de um aluuno especifico - Atividade do professor
+//Escreva uma função que altere a nota de um aluno especifico - Atividade do professor
 //escreva uma que inclua a situação de todos os alunos
 //caso a nota for menor que 50, situação = reprovado
+
+//& - passagem de parametro por referencia
+
+// function situaçãoAproRepro(array &$turma, $aluno){
+//     foreach($turma as $chave => $aluno){
+//         if($aluno["nota"] < 50){
+//             echo "Que pena, você foi reprovado";
+//         }elseif($aluno["nota"] > 50){
+//             echo "Parabéns, você foi aprovado!!!";
+//         }
+//     }
+
+//     return;
+// }
+
+// situaçãoAproRepro($turma);
+
 //caso a nota for maior que 50, situação = aprovado
 
-function alterarNotaAluno(array $turma, $nome, $alterarNota){
-    foreach($turma as $chave => $aluno){
-        if($aluno["nome"] == $nome){
-            $turma[$chave]["nota"] == $alterarNota
-            
-            return;
-      
-        }
-     }
-}
-$alterarNota = alterarNotaAluno($nome);
-echo "A nota " . $alterarNota["nota"] . " deve ser alterada para 100 " .  " . ";
+
+// $alterarNota = alterarNotaAluno($nome);
+// echo "A nota " . $alterarNota["nota"] . " deve ser alterada para 100 " .  " . ";
  
 ?>
